@@ -1,0 +1,220 @@
+*, *::after, *::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #D6FFF6;
+}
+
+.container {
+  margin: auto;
+  max-width: 1200px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 4rem;
+}
+
+#content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+h1 {
+  font-size: x-large;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: large;
+  text-align: center;
+  padding-bottom: .5rem;
+}
+
+h3 {
+  font-size: medium;
+  padding-bottom: .5rem;
+}
+
+li a, a {
+  text-decoration: none;
+  color: rgb(123, 123, 123);
+  font-weight: 500;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+li a:hover {
+  color: black;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+/* NAVIGATION MENU */
+
+.main-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+}
+
+.main-navigation {
+  display: flex;
+  gap: 1rem;
+}
+
+.main-menu {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  gap: 10px 20px;
+}
+
+.main-menu a {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.main-menu a:hover {
+  text-decoration: none;
+  font-weight: 700;
+  color: black;
+}
+
+.main-menu a.active {
+  color: black;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* INDEX */
+
+.index-wrapper {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.index-wrapper .project-author {
+  padding-top: 2rem;
+  font-weight: 700;
+}
+
+
+/* USER */
+.user-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.user-posts-wrapper, .user-albums-wrapper {
+  align-items: center;
+  width: 400px;
+  padding-bottom: 1rem;
+
+  font-size: small;
+}
+
+/* ALBUMS */
+.albums-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.album-item {
+  width: 300px;
+  background-color: white;
+}
+
+.album-link {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  text-decoration: none;
+  color: black;
+}
+
+.album-link:hover {
+  color: white;
+  background-color: rgb(89, 89, 89);
+  text-decoration: none;
+}
+
+.album-link img {
+  padding: 1rem 1rem 0rem 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.album-link .album-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.album-link .album-info .album-title {
+  font-size: medium;
+}
+
+.album-link .album-info .album-author {
+  font-size: small;
+  
+}
+
+/* SINGLE POST */
+
+.section-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.post-wrapper {
+  padding: 1rem;
+  background-color: white;
+}
+
+.post-title-wrapper {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.post-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.comment-item {
+  background-color: lightblue;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.comment-item span {
+  display: inline-block;
+  padding-top: .3rem;
+  font-style: italic;
+}
