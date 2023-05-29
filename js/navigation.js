@@ -58,6 +58,7 @@ export default function mainHeader() {
 
     if (location.pathname === '/' + path) {
       menuLink.classList.add('active');
+      console.log('veikia');
     }
 
     menuItem.append(menuLink);
