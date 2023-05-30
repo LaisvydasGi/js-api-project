@@ -1,4 +1,4 @@
-// Galima ieškoti tik po vieną žodį :((
+// Galima ieškoti tik po vieną žodį su URL :((
 
 import mainHeader from './navigation.js';
 import {API_URL} from "./config.js";
