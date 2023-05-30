@@ -1,29 +1,13 @@
+import {MENU_ITEMS} from './config.js';
+import {renderHTMLelement} from './function-module.js';
+
 // export default - eksportuojamas tik vienas metodas .js faile.
-
 export default function mainHeader() {
-  const headerElement = document.createElement('header');
-  headerElement.classList.add('main-header');
+  const headerElement = renderHTMLelement('header', 'main-header');
 
-  const menuItems = [
-    {
-      title: "users",
-      path: "users.html",
-    },
-    {
-      title: "posts",
-      path: "posts.html",
-    },
-    {
-      title: "albums",
-      path: "albums.html",
-    },
-  ];
+  const navigationElement = renderHTMLelement('nav', 'main-navigation');
 
-  const navigationElement = document.createElement('nav');
-  navigationElement.classList.add('main-navigation');
-
-  const logoWrapper = document.createElement('a');
-  logoWrapper.href = './index.html';
+  const logoWrapper = renderHTMLelement('a', '', '', './index.html');
   const logoElement = document.createElement('img');
   logoElement.src = './images/project.png';
   logoElement.style.width = '4rem';
@@ -38,33 +22,26 @@ export default function mainHeader() {
   searchInput.name = 'search_value';
   searchInput.id = 'search_value';
 
-  const searchButton = document.createElement('button');
+  const searchButton = renderHTMLelement('button', '', 'Search');
   searchButton.type = 'submit';
-  searchButton.textContent = 'Search';
 
   searchForm.append(searchInput, searchButton);
-
   headerElement.append(logoWrapper, navigationElement);
 
-  const menuList = document.createElement('ul');
-  menuList.classList.add('main-menu');
+  const menuList = renderHTMLelement('ul', 'main-menu');
 
-  menuItems.forEach(item => {
+  MENU_ITEMS.forEach(item => {
     const { title, path } = item;
     
-    const menuItem = document.createElement('li');
+    const menuItem = document.createElement('li', 'menu-item');
   
-    const menuLink = document.createElement('a');
+    const menuLink = renderHTMLelement('a', 'menu-link', title, './' + path);
 
     if (location.pathname === '/' + path) {
       menuLink.classList.add('active');
     }
 
     menuItem.append(menuLink);
-  
-    menuLink.textContent = title;
-    menuLink.href = './' + path;
-
     menuList.append(menuItem);
   })
 
