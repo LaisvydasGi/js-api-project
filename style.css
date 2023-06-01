@@ -216,3 +216,9 @@ li a:hover {
   padding-top: .3rem;
   font-style: italic;
 }
+
+/* SEARCH */
+.container #search-form {
+  display: flex;
+  justify-content: center;
+}

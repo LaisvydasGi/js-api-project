@@ -1,35 +1,31 @@
 // Galima ieškoti tik po vieną žodį su URL :((
 
 import mainHeader from './navigation.js';
-import {API_URL} from "./config.js";
-import {fetchData, getId, renderHTMLelement, renderAlbumsList, renderPostsList} from "./function-module.js";
+import createSearchResults from "./createSearchResults.js";
+import {getId} from "./function-module.js";
+
 
 async function init() {
   const container = document.querySelector('.container');
   container.prepend(mainHeader());
 
+  const searchForm = document.querySelector('#search-form');
+
   const contentElement = document.querySelector('#content');
 
   const searchValue = getId('search_value');
+  createSearchResults(searchValue, contentElement);
 
-  const posts = await fetchData(`${API_URL}/posts?q=${searchValue}`);
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  const albums = await fetchData(`${API_URL}/albums?q=${searchValue}`);
+    const form = event.target;
+    const searchInputValue = form.search.value;
 
-  if(posts.length === 0 || albums.length === 0) {
-    contentElement.innerHTML = 
-    `<h1>No search results for "${searchValue}".</h1>
-    <p>Search for something different...</p>`
+    createSearchResults(searchInputValue, contentElement);
 
-    return;
-  }
-
-  const searchTitle = renderHTMLelement('h1', '', `Search results for "${searchValue}":`);
-
-  const postsList = renderPostsList(posts);
-  const albumsList = renderAlbumsList(albums);
-
-  contentElement.append(searchTitle, postsList, albumsList)
+    form.reset();
+  })
 }
 
 init();

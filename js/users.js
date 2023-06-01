@@ -14,26 +14,27 @@ async function init() {
   content.append(usersTitle, usersList);
 }
 
+init();
+
 function renderUsersList(users) {
   const usersWrapper = renderHTMLelement('div', 'users-wrapper');
   const usersList = renderHTMLelement('ul', 'users-list');
-
-  usersWrapper.append(usersList);
 
   users.forEach(user => {
     const userId = user.id;
 
     const userItem = renderHTMLelement('li', 'user-item');
 
-    const userLink = renderHTMLelement('a', '', `${user.name} (${user.posts.length} posts)`, './user.html?user_id=' + userId);
-    // userLink.textContent = `${user.name} (${user.posts.length} posts)`;
-    // userLink.href = './user.html?user_id=' + userId;
+    const userLink = renderHTMLelement('a', '', `${user.name}`, './user.html?user_id=' + userId);
+
+    if (user.posts) {
+      userLink.textContent = `${user.name} (${user.posts.length} posts)`;
+    }
 
     userItem.append(userLink);
     usersList.append(userItem);
   })
 
+  usersWrapper.append(usersList);
   return usersWrapper;
 }
-
-init();

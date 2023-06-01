@@ -34,11 +34,37 @@ export function renderHTMLelement(type, className, text, href) {
   return item;
 }
 
+export function renderUsersList(users) {
+  const usersWrapper = renderHTMLelement('div', 'users-wrapper');
+  const usersWrapperTitle = renderHTMLelement('h2', '', '');
+  const usersList = renderHTMLelement('ul', 'users-list');
+  
+  if (users.length > 0) {
+    usersWrapperTitle.textContent = `Users (${users.length}):`;
+  
+    users.forEach(user => {
+      const userId = user.id;
+  
+      const userItem = renderHTMLelement('li', 'user-item');
+  
+      const userLink = renderHTMLelement('a', '', `${user.name}`, './user.html?user_id=' + userId);
+  
+      if (user.posts) {
+        userLink.textContent = `${user.name} (${user.posts.length} posts)`;
+      }
+  
+      userItem.append(userLink);
+      usersList.append(userItem);
+    })
+    usersWrapper.append(usersWrapperTitle, usersList);
+  }
+  return usersWrapper;
+}
+
 export function renderPostsList(posts) {
   const postsWrapper = renderHTMLelement('div', 'user-posts-wrapper');
 
-  const postsWrapperTitle = renderHTMLelement('h2', '', 'No Posts:');
-  postsWrapperTitle.textContent = 'No Posts:';
+  const postsWrapperTitle = renderHTMLelement('h2', '', 'No Posts...');
   
   if (posts.length > 0) {
     postsWrapperTitle.textContent = `Posts (${posts.length}):`;
