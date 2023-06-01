@@ -13,19 +13,11 @@ export default function mainHeader() {
   logoElement.style.width = '4rem';
   logoWrapper.append(logoElement);
 
-  const searchForm = document.createElement('form');
-  searchForm.action = './search.html';
+  if (!location.pathname.endsWith('search.html')) {
+    const searchForm = createSearchForm();
+    navigationElement.append(searchForm);
+  }
 
-  const searchInput = document.createElement('input');
-  searchInput.style.width = '8rem';
-  searchInput.type = 'text';
-  searchInput.name = 'search_value';
-  searchInput.id = 'search_value';
-
-  const searchButton = renderHTMLelement('button', '', 'Search');
-  searchButton.type = 'submit';
-
-  searchForm.append(searchInput, searchButton);
   headerElement.append(logoWrapper, navigationElement);
 
   const menuList = renderHTMLelement('ul', 'main-menu');
@@ -45,7 +37,25 @@ export default function mainHeader() {
     menuList.append(menuItem);
   })
 
-  navigationElement.append(menuList, searchForm);
+  navigationElement.prepend(menuList);
 
   return headerElement;
+}
+
+function createSearchForm() {
+  const searchForm = document.createElement('form');
+  searchForm.action = './search.html';
+
+  const searchInput = document.createElement('input');
+  searchInput.style.width = '8rem';
+  searchInput.type = 'text';
+  searchInput.name = 'search_value';
+  searchInput.id = 'search_value';
+
+  const searchButton = renderHTMLelement('button', '', 'Search');
+  searchButton.type = 'submit';
+
+  searchForm.append(searchInput, searchButton);
+
+  return searchForm;
 }
